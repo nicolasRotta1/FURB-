@@ -57,12 +57,12 @@ public class MediaPonderada {
 
     float mediaDosTrabalhos = ((trabalhoUnidade1 + trabalhoUnidade2 + trabalhoUnidade3 + trabalhoUnidade4 + trabalhoUnidade5 + trabalhoUnidade6 + trabalhoUnidade7) / 7);
 
-    float mediaFinalPonderada = (((prova1 * 0.3f) + (prova2 * 0.2f) + (trabalhoFinal * 0.3f) + (mediaDosTrabalhos * 0.2f))) ;
+    float mediaFinalPonderada = (((prova1 * 0.2f) + (prova2 * 0.3f) + (trabalhoFinal * 0.3f) + (mediaDosTrabalhos * 0.2f))) ;
 
     if (mediaFinalPonderada > 6) {
-        System.out.println(ANSI_VERDE + "Você foi Aprovado sua média é " + mediaFinalPonderada + ANSI_RESET);   
+        System.out.printf(ANSI_VERDE + "Você foi Aprovado sua média é %.2f%n" + mediaFinalPonderada + ANSI_RESET);   
     }else{
-        System.out.println(ANSI_VERMELHO + "Você foi reprovado sua média é " + mediaFinalPonderada + ANSI_RESET); 
+        System.out.printf(ANSI_VERMELHO + "Você foi reprovado sua média é %.2f%n" + mediaFinalPonderada + ANSI_RESET); 
     }
 
     }catch(InputMismatchException e){
