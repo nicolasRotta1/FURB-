@@ -8,7 +8,7 @@ public class Aula2_MediaPodenrada {
         float mediap = ((nota1 * 0.2f) + (nota2 * 0.3f) + (nota3 * 0.3f) + (mediaTrabalhos * 0.2f));
 
         System.out.println(mediap);
-
-        String string = "abc";
+        
+        
     }
 }
