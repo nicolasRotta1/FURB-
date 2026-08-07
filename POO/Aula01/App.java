@@ -26,10 +26,8 @@ public static void main(String[] args) {
         
         System.out.println("------- Pessoa "+(i)+" --------");
 
-        System.out.println("Nome: "+pessoas.get(i-1).nome);
-        System.out.println("Altura: "+pessoas.get(i-1).altura);
-        System.out.println("Peso: "+pessoas.get(i-1).peso);
-        System.out.println("IMC: "+pessoas.get(i-1).calcularImc());
+        pessoas.get(i-1).mostrarDados();
+        
         System.out.println("");
 
     }

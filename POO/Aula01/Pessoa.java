@@ -16,7 +16,15 @@ public class Pessoa {
     }
 
     public  double calcularImc(){
-        return peso / (altura * altura);
+        return this.peso / (this.altura * this.altura);
     }
 
+    public void mostrarDados(){
+        
+        System.out.println("Nome: "+this.nome);
+        System.out.println("Altura: "+this.altura);
+        System.out.println("Peso: "+this.peso);
+        System.out.println("IMC: "+calcularImc());
+        
+    }
 }
