@@ -19,12 +19,36 @@ public class Pessoa {
         return this.peso / (this.altura * this.altura);
     }
 
+    public static Pessoa cadastrarPessoa(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("");
+
+        System.out.print("Digite seu nome: ");
+        String nome = sc.next();
+
+        System.out.print("Digite Sua altura: ");
+        double altura = sc.nextDouble();
+
+        System.out.print("Digite seu peso: ");
+        double peso = sc.nextDouble();
+
+        System.out.println("");
+
+
+        Pessoa pessoa = new Pessoa(nome,altura,peso);
+
+        return pessoa;
+
+
+    }
+
     public void mostrarDados(){
         
         System.out.println("Nome: "+this.nome);
         System.out.println("Altura: "+this.altura);
         System.out.println("Peso: "+this.peso);
         System.out.println("IMC: "+calcularImc());
-        
+
     }
 }

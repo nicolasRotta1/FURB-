@@ -15,7 +15,7 @@ public static void main(String[] args) {
     for(int i=0; i<numero; i++){
         
         System.out.println("------- Pessoa "+(i+1)+" --------");
-        pessoas.add(cadastrarPessoa());
+        pessoas.add(Pessoa.cadastrarPessoa());
     }
     
     System.out.println("<------------------------Resultados----------------------->");
@@ -27,7 +27,7 @@ public static void main(String[] args) {
         System.out.println("------- Pessoa "+(i)+" --------");
 
         pessoas.get(i-1).mostrarDados();
-        
+
         System.out.println("");
 
     }
@@ -37,27 +37,4 @@ public static void main(String[] args) {
 
 
 }
-    public static Pessoa cadastrarPessoa(){
-    Scanner sc = new Scanner(System.in);
-
-    System.out.println("");
-
-    System.out.print("Digite seu nome: ");
-    String nome = sc.next();
-
-    System.out.print("Digite Sua altura: ");
-    double altura = sc.nextDouble();
-
-    System.out.print("Digite seu peso: ");
-    double peso = sc.nextDouble();
-
-    System.out.println("");
-
-
-    Pessoa pessoa = new Pessoa(nome,altura,peso);
-
-    return pessoa;
-
-
-    }
 }
