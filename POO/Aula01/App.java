@@ -13,27 +13,28 @@ public static void main(String[] args) {
     ArrayList <Pessoa> pessoas = new ArrayList<>();
 
     for(int i=0; i<numero; i++){
-       
-        System.out.println("-----------------------------------------------------------");
+        
+        System.out.println("------- Pessoa "+(i+1)+" --------");
         pessoas.add(cadastrarPessoa());
     }
     
     System.out.println("<------------------------Resultados----------------------->");
 
-
-    for(int i=1; i<= numero; i++){
+    
+    for(int i=pessoas.size(); i > 0; i--){
         System.out.println("");
         
-        System.out.println("Pessoa "+i+": ");
+        System.out.println("------- Pessoa "+(i)+" --------");
+
         System.out.println("Nome: "+pessoas.get(i-1).nome);
         System.out.println("Altura: "+pessoas.get(i-1).altura);
         System.out.println("Peso: "+pessoas.get(i-1).peso);
         System.out.println("IMC: "+pessoas.get(i-1).calcularImc());
         System.out.println("");
 
-        System.out.println("-----------------------------------------------------------");
     }
 
+    
 
 
 
