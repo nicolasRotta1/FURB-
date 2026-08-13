@@ -17,6 +17,7 @@ public class Produto {
     public void vender(int quantidade){
         if(quantidade <= 0){
             System.out.println("Valor inválido!");
+            return;
         }
 
         if (quantidade > this.estoque){
@@ -32,6 +33,7 @@ public class Produto {
     public void repor(int quantidade){
         if(quantidade <= 0){
             System.out.println("Valor inválido!");
+            return;
         }
         this.estoque = this.estoque + quantidade;
         System.out.println(quantidade+" "+this.nome+" repostos com sucesso.");
