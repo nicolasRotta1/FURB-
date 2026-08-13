@@ -26,7 +26,7 @@ public class ContaBancaria {
         System.out.println("-- Para Criar sua conta Precisamos de alguns dados -- ");
 
         System.out.print("Nome de quem vai utilizar esta conta: ");
-        String titular = App.sc.next();
+        String titular = App3.sc.next();
 
         ContaBancaria conta = new ContaBancaria(titular);
 
@@ -51,7 +51,7 @@ public class ContaBancaria {
             System.out.println("(4) - Listar todas as contas - ");
             System.out.println("(5) - Sair - ");
             System.out.println("Opção: ");
-            int opc = App.sc.nextInt();
+            int opc = App3.sc.nextInt();
 
             if (opc == 5) {
                 System.out.println("Saindo da conta . . .");
@@ -61,7 +61,7 @@ public class ContaBancaria {
             switch (opc) {
                 case 1:
                     System.out.println("Digite o valor que deseja depositar:                    digite 0 para sair.");
-                    double valor = App.sc.nextDouble();
+                    double valor = App3.sc.nextDouble();
                     if (valor == 0) {
                         break;
                     }
@@ -71,7 +71,7 @@ public class ContaBancaria {
 
                 case 2:
                     System.out.println("Digite o valor que deseja sacar:                    digite 0 para sair.");
-                    valor = App.sc.nextDouble();
+                    valor = App3.sc.nextDouble();
                     if (valor == 0) {
                         break;
                     }
@@ -81,7 +81,7 @@ public class ContaBancaria {
 
                 case 3:
                     System.out.println("Digite o número da conta destino:                    digite 0 para sair.");
-                    int numeroDestino = App.sc.nextInt();
+                    int numeroDestino = App3.sc.nextInt();
                     if (numeroDestino == 0) {
                         break;
                     }
@@ -99,7 +99,7 @@ public class ContaBancaria {
                     }
 
                     System.out.println("Digite o valor que deseja transferir:                    digite 0 para sair.");
-                    valor = App.sc.nextDouble();
+                    valor = App3.sc.nextDouble();
                     if (valor == 0) {
                         break;
                     }

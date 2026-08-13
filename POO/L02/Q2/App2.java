@@ -1,6 +1,4 @@
-
-
-public class App {
+public class App2 {
 public static void main(String[] args) {
 
     Produto produto1 = new Produto();

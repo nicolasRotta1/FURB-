@@ -3,7 +3,7 @@ package Aula02.Projetinho;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class App {
+public class App3 {
     public static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -47,7 +47,7 @@ public class App {
             System.out.println("(3) - Sair");
 
             System.out.println("Opção:  ");
-            int opc = App.sc.nextInt();
+            int opc = App3.sc.nextInt();
 
             if(opc == 3){
                 System.out.println("Encerrando programa . . .");
@@ -64,7 +64,7 @@ public class App {
                     mostrarContas(contaBancarias);
 
                     System.out.println("Digite o número da conta que deseja acessar:            digite -1 para voltar.");
-                    int indice = App.sc.nextInt();
+                    int indice = App3.sc.nextInt();
 
                     if (indice == -1) {
                         break;
