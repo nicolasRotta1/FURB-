@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="copilot">
+  <diagram id="diagram-1" name="ClasseSonora">
+    <mxGraphModel dx="1414" dy="777" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="musica" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;" value="Musica" vertex="1">
+          <mxGeometry height="270" width="320" x="130" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="musica-attrs" parent="musica" style="text;align=left;verticalAlign=top;html=1;" value="- proximoId: int (static)&#xa;- id: int&#xa;- titulo: String&#xa;- artista: String&#xa;- duracaoSegundos: int&#xa;- reproducoes: int" vertex="1">
+          <mxGeometry height="100" width="220" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="musica-methods" parent="musica" style="text;align=left;verticalAlign=top;html=1;strokeColor=default;" value="+ Musica(String titulo, String artista, int duracaoSegundos)&#xa;+ int getId()&#xa;+ String getTitulo()&#xa;+ String getArtista()&#xa;+ int getDuracaoSegundos()&#xa;+ int getReproducoes()&#xa;+ void reproduzir()&#xa;+ String getDuracaoFormatada()" vertex="1">
+          <mxGeometry height="150" width="320" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;" value="Usuario" vertex="1">
+          <mxGeometry height="170" width="220" x="480" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario-attrs" parent="usuario" style="text;align=left;verticalAlign=top;html=1;" value="- proximoId: int (static)&#xa;- id: int&#xa;- nome: String&#xa;- email: String" vertex="1">
+          <mxGeometry height="60" width="220" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario-methods" parent="usuario" style="text;align=left;verticalAlign=top;html=1;strokeColor=default;" value="+ Usuario(String nome, String email)&#xa;+ int getId()&#xa;+ String getNome()&#xa;+ String getEmail()" vertex="1">
+          <mxGeometry height="80" width="220" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="playlist" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;" value="Playlist" vertex="1">
+          <mxGeometry height="260" width="280" x="150" y="435" as="geometry" />
+        </mxCell>
+        <mxCell id="playlist-attrs" parent="playlist" style="text;align=left;verticalAlign=top;html=1;" value="- CAPACIDADE: int (static)&#xa;- nome: String&#xa;- dono: Usuario&#xa;- Musica[] musicas&#xa;- quantidade: int" vertex="1">
+          <mxGeometry height="100" width="280" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="playlist-methods" parent="playlist" style="text;align=left;verticalAlign=top;html=1;strokeWidth=1;fillColor=none;strokeColor=default;" value="+ Playlist(String nome, Usuario dono)&#xa;+ String getNome()&#xa;+ Usuario getDono()&#xa;+ int getQuantidade()&#xa;+ boolean adicionar(Musica musica)&#xa;+ Musica getNaPosicao(int indice)&#xa;+ boolean removerNaPosicao(int indice)&#xa;+ int getDuracaoTotalSegundos()&#xa;+ void reproduzirTudo()" vertex="1">
+          <mxGeometry height="150" width="280" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="plataforma" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;" value="Plataforma" vertex="1">
+          <mxGeometry height="265" width="300" x="827" y="432.5" as="geometry" />
+        </mxCell>
+        <mxCell id="plataforma-attrs" parent="plataforma" style="text;align=left;verticalAlign=top;html=1;" value="- CAPACIDADE: int (static)&#xa;- Musica[] musicas&#xa;- Usuario[] usuarios&#xa;- totalMusicas: int&#xa;- totalUsuarios: int" vertex="1">
+          <mxGeometry height="120" width="300" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="plataforma-methods" parent="plataforma" style="text;align=left;verticalAlign=top;html=1;strokeColor=default;" value="+ Plataforma()&#xa;+ boolean cadastrarMusica(Musica musica)&#xa;+ boolean cadastrarUsuario(Usuario usuario)&#xa;+ Musica buscarMusicaPorId(int id)&#xa;+ Musica buscarMusica(String titulo)&#xa;+ int getTotalMusicas()&#xa;+ int getTotalUsuarios()" vertex="1">
+          <mxGeometry height="135" width="300" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="app" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;startSize=26;html=1;" value="App" vertex="1">
+          <mxGeometry height="260" width="610" x="665" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="app-methods" parent="app" style="text;align=left;verticalAlign=top;html=1;" value="+ static void main(String[] args)&#xa;+ int popularAcervo(Plataforma plataforma, Musica[] musicas)&#xa;+ int cadastrarMusica(Scanner scanner, Plataforma plataforma, Musica[] musicas, int quantidade)&#xa;+ void cadastrarUsuario(Scanner scanner, Plataforma plataforma)&#xa;+ void criarPlaylist(Scanner scanner, Plataforma plataforma)&#xa;+ void buscarPorId(Scanner scanner, Plataforma plataforma)&#xa;+ void buscarPorTitulo(Scanner scanner, Plataforma plataforma)&#xa;+ void reproduzirMusica(Scanner scanner, Plataforma plataforma)&#xa;+ void listarAcervo(Musica[] musicas, int quantidade)&#xa;+ void exibirMusica(Musica musica)&#xa;+ Integer lerInteiro(Scanner scanner)&#xa;+ void rodarDemo(Plataforma plataforma, Musica[] musicasCadastradas, int quantidadeMusicas)" vertex="1">
+          <mxGeometry height="234" width="610" x="10" y="33" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="playlist" style="edgeShape=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="usuario">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="playlist" style="edgeShape=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="musica">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="plataforma" style="edgeShape=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="musica">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="plataforma" style="edgeShape=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="usuario">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

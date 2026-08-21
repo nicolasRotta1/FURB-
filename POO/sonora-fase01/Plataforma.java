@@ -11,7 +11,8 @@ public class Plataforma {
 		this.totalMusicas = 0;
 		this.totalUsuarios = 0;
 	}
-
+	
+	// Cadastrar musica na plataforma, retorna false se a musica for nula ou se a plataforma estiver cheia
 	public boolean cadastrarMusica(Musica musica) {
 		if (musica == null || totalMusicas == CAPACIDADE) {
 			return false;
@@ -22,6 +23,7 @@ public class Plataforma {
 		return true;
 	}
 
+	// Cadastrar usuário na plataforma, retorna false se o usuário for nulo ou se a plataforma estiver cheia
 	public boolean cadastrarUsuario(Usuario usuario) {
 		if (usuario == null || totalUsuarios == CAPACIDADE) {
 			return false;
@@ -32,6 +34,7 @@ public class Plataforma {
 		return true;
 	}
 
+	// Buscar música por ID, retorna null se não encontrar(usa sobrecarga de métodos)
 	public Musica buscarMusicaPorId(int id) {
 		for (int indice = 0; indice < totalMusicas; indice++) {
 			if (musicas[indice].getId() == id) {
@@ -42,6 +45,7 @@ public class Plataforma {
 		return null;
 	}
 
+	// Buscar música por título, retorna null se não encontrar(usa sobrecarga de métodos)
 	public Musica buscarMusica(String titulo) {
 		if (titulo == null) {
 			return null;
@@ -58,6 +62,14 @@ public class Plataforma {
 
 	public int getTotalMusicas() {
 		return totalMusicas;
+	}
+
+	public Musica[] getMusicas() {
+		Musica[] copia = new Musica[totalMusicas];
+		for (int indice = 0; indice < totalMusicas; indice++) {
+			copia[indice] = musicas[indice];
+		}
+		return copia;
 	}
 
 	public int getTotalUsuarios() {

@@ -12,7 +12,7 @@ public class Playlist {
 		this.quantidade = 0;
 	}
 
-	
+	// Adiciona uma musica na playlist, retorna false se a musica for nula ou se a playlist estiver cheia
 	public boolean adicionar(Musica musica) {
 		if (musica == null || quantidade == CAPACIDADE) {
 			return false;
@@ -31,6 +31,7 @@ public class Playlist {
 		return musicas[indice];
 	}
 
+	// Remover musica na posição especificada, tambem reorganiza o array de musicas para que não tenha espaços vazios
 	public boolean removerNaPosicao(int indice) {
 		if (indice < 0 || indice >= quantidade) {
 			return false;
@@ -45,6 +46,7 @@ public class Playlist {
 		return true;
 	}
 
+	// Retorna a duração total da playlist em segundos
 	public int getDuracaoTotalSegundos() {
 		int duracaoTotal = 0;
 		for (int indice = 0; indice < quantidade; indice++) {
@@ -54,6 +56,7 @@ public class Playlist {
 		return duracaoTotal;
 	}
 
+	// Reproduz todas as musicas da playlist
 	public void reproduzirTudo() {
 		for (int indice = 0; indice < quantidade; indice++) {
 			musicas[indice].reproduzir();
