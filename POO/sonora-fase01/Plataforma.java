@@ -52,7 +52,7 @@ public class Plataforma {
 		}
 
 		for (int indice = 0; indice < totalMusicas; indice++) {
-			if (titulo.equals(musicas[indice].getTitulo())) {
+			if (titulo.equalsIgnoreCase(musicas[indice].getTitulo())) {
 				return musicas[indice];
 			}
 		}

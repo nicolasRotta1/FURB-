@@ -4,7 +4,7 @@ public class Musica {
     private String titulo;
     private String artista;
     private int duracaoSegundos;
-    private  int reproducoes; // Quantas vezes a musica foi tocada;
+    private int reproducoes; // Quantas vezes a musica foi tocada;
 
     public Musica(String titulo, String artista, int duracaoSegundos) {
         this.id = proximoId++;
