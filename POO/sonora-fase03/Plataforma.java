@@ -23,6 +23,43 @@ public class Plataforma {
 		return true;
 	}
 
+	public Musica getMusica(int id) {
+		for (int indice = 0; indice < totalMusicas; indice++) {
+			if (musicas[indice].getId() == id) {
+				return musicas[indice];
+			}
+		}
+
+		throw new IndexOutOfBoundsException("Música não encontrada: " + id);
+	}
+
+	public boolean atualizarMusica(int id, String titulo, String artista, int duracaoSegundos) {
+		Musica musica = getMusica(id);
+		musica.validarTitulo(titulo);
+		musica.validarArtista(artista);
+		musica.validarDuracao(duracaoSegundos);
+		musica.setTitulo(titulo.trim());
+		musica.setArtista(artista.trim());
+		musica.setDuracaoSegundos(duracaoSegundos);
+		return true;
+	}
+
+	public boolean removerMusica(int id) {
+		for (int indice = 0; indice < totalMusicas; indice++) {
+			if (musicas[indice].getId() == id) {
+				for (int posicao = indice; posicao < totalMusicas - 1; posicao++) {
+					musicas[posicao] = musicas[posicao + 1];
+				}
+
+				totalMusicas--;
+				musicas[totalMusicas] = null;
+				return true;
+			}
+		}
+
+		throw new IndexOutOfBoundsException("Música não encontrada: " + id);
+	}
+
 	// Cadastrar usuário na plataforma, retorna false se o usuário for nulo ou se a plataforma estiver cheia
 	public boolean cadastrarUsuario(Usuario usuario) {
 		if (usuario == null || totalUsuarios == CAPACIDADE) {
@@ -34,30 +71,40 @@ public class Plataforma {
 		return true;
 	}
 
-	// Buscar música por ID, retorna null se não encontrar(usa sobrecarga de métodos)
-	public Musica buscarMusicaPorId(int id) {
-		for (int indice = 0; indice < totalMusicas; indice++) {
-			if (musicas[indice].getId() == id) {
-				return musicas[indice];
+	public Usuario getUsuario(int id) {
+		for (int indice = 0; indice < totalUsuarios; indice++) {
+			if (usuarios[indice].getId() == id) {
+				return usuarios[indice];
 			}
 		}
 
-		return null;
+		throw new IndexOutOfBoundsException("Usuário não encontrado: " + id);
 	}
 
-	// Buscar música por título, retorna null se não encontrar(usa sobrecarga de métodos)
-	public Musica buscarMusica(String titulo) {
-		if (titulo == null) {
-			return null;
-		}
+	public boolean atualizarUsuario(int id, String nome, String email) {
+		Usuario usuario = getUsuario(id);
 
-		for (int indice = 0; indice < totalMusicas; indice++) {
-			if (titulo.equalsIgnoreCase(musicas[indice].getTitulo())) {
-				return musicas[indice];
+		usuario.validarNome(nome);
+		usuario.validarEmail(email);
+		usuario.setNome(nome.trim());
+		usuario.setEmail(email.trim());
+		return true;
+	}
+
+	public boolean removerUsuario(int id) {
+		for (int indice = 0; indice < totalUsuarios; indice++) {
+			if (usuarios[indice].getId() == id) {
+				for (int posicao = indice; posicao < totalUsuarios - 1; posicao++) {
+					usuarios[posicao] = usuarios[posicao + 1];
+				}
+
+				totalUsuarios--;
+				usuarios[totalUsuarios] = null;
+				return true;
 			}
 		}
 
-		return null;
+		throw new IndexOutOfBoundsException("Usuário não encontrado: " + id);
 	}
 
 	public int getTotalMusicas() {

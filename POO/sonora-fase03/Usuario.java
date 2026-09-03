@@ -20,6 +20,8 @@ public class Usuario {
     public String getNome() {
         return nome;
     }
+
+    // Valida nome null e blank
     public void validarNome(String nome) {
         if (nome == null || nome.trim().isEmpty()) {
             throw new IllegalArgumentException("Nome inválido: o nome do usuário não pode ser nulo, vazio ou composto apenas por espaços.");
@@ -31,6 +33,8 @@ public class Usuario {
         this.nome = nome;
     }
 
+    // Verifica campo null, campo blank(so espacos)
+    // e verifica se email e escrito de forma valida
     public void validarEmail(String email) {
         if (email == null || email.trim().isEmpty()) {
             throw new IllegalArgumentException("Email inválido: o email do usuário não pode ser nulo ou vazio.");

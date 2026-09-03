@@ -32,13 +32,14 @@ public class Musica {
         return titulo;
     }
 
-    
+    // Valida null e blank
     public void validarTitulo(String titulo) {
         if (titulo == null || titulo.trim().isEmpty()) {
             throw new IllegalArgumentException("Título inválido: o título da música não pode ser nulo, vazio ou composto apenas por espaços.");
         }
     }
 
+    //Valida null e blank
     public void validarArtista(String artista) {
         if (artista == null || artista.trim().isEmpty()) {
             throw new IllegalArgumentException("Artista inválido: o nome do artista não pode ser nulo, vazio ou composto apenas por espaços.");
@@ -56,6 +57,7 @@ public class Musica {
         this.artista = artista;
     }
 
+    // Valida duracao menor ou igual a 0(nao pode)
     public void validarDuracao(int duracaoSegundos) {
         if (duracaoSegundos <= 0) {
             throw new IllegalArgumentException("Duração inválida: " + duracaoSegundos + ". A duração deve ser maior que zero.");
