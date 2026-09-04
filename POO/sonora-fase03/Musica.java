@@ -48,13 +48,13 @@ public class Musica {
 
     public void setTitulo(String titulo) {
         validarTitulo(titulo);
-        this.titulo = titulo;
+        this.titulo = titulo.trim();
     }
 
 
     public void setArtista(String artista) {
         validarArtista(artista);
-        this.artista = artista;
+        this.artista = artista.trim();
     }
 
     // Valida duracao menor ou igual a 0(nao pode)

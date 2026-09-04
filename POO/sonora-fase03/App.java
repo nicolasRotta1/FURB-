@@ -60,6 +60,15 @@ public class App {
 					case 7:
 						listarAcervo(plataforma.getMusicas(), plataforma.getTotalMusicas());
 						break;
+					case 8:
+						gerenciarPlaylists(sc, plataforma);
+						break;
+					case 9:
+						atualizarMusicaNaPlataforma(sc, plataforma);
+						break;
+					case 10:
+						removerMusicaNaPlataforma(sc, plataforma);
+						break;
 					case 0:
 						executando = false;
 						break;
@@ -143,7 +152,8 @@ public class App {
 				return;
 			}
 
-			Playlist playlist = new Playlist(nome, dono);
+			Playlist playlist = new Playlist(nome, dono, plataforma);
+			plataforma.cadastrarPlaylist(playlist);
 			System.out.println("Informe os IDs das musicas. Digite 0 para terminar.");
 			while (true) {
 				int id = lerInteiroValido(sc, "ID da musica: ");
@@ -151,11 +161,15 @@ public class App {
 					break;
 				}
 
-				Musica musica = plataforma.getMusica(id);
-				if (playlist.adicionar(musica)) {
-					System.out.println("Musica adicionada.");
-				} else {
-					System.out.println("Musica inexistente ou playlist cheia.");
+				try {
+					Musica musica = plataforma.getMusica(id);
+					if (playlist.adicionar(musica)) {
+						System.out.println("Musica adicionada.");
+					} else {
+						System.out.println("Musica inexistente, ja adicionada ou playlist cheia.");
+					}
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("Musica inexistente na plataforma.");
 				}
 			}
 
@@ -165,28 +179,157 @@ public class App {
 		}
 	}
 
-	private static void buscarPorId(Scanner sc, Plataforma plataforma) {
-		int id = lerInteiroValido(sc, "ID: ");
-		exibirMusica(plataforma.getMusica(id));
+	private static void gerenciarPlaylists(Scanner sc, Plataforma plataforma) {
+		Playlist[] playlists = plataforma.getPlaylists();
+		if (playlists.length == 0) {
+			System.out.println("Nenhuma playlist cadastrada.");
+			return;
+		}
+
+		System.out.println("\n=== Playlists ===");
+		for (int indice = 0; indice < playlists.length; indice++) {
+			System.out.println((indice + 1) + " - " + playlists[indice].getNome() + " (" + playlists[indice].getQuantidade() + " musica(s))");
+		}
+
+		int indiceEscolhido = lerInteiroValido(sc, "Escolha a playlist: ");
+		if (indiceEscolhido < 1 || indiceEscolhido > playlists.length) {
+			System.out.println("Playlist invalida.");
+			return;
+		}
+
+		abrirMenuPlaylist(sc, playlists[indiceEscolhido - 1], plataforma);
 	}
 
-	private static Musica buscarMusicaPorTitulo(Plataforma plataforma, String titulo) {
-		if (titulo == null) {
-			return null;
-		}
+	private static void abrirMenuPlaylist(Scanner sc, Playlist playlist, Plataforma plataforma) {
+		boolean executando = true;
+		while (executando) {
+			System.out.println("\n=== Playlist: " + playlist.getNome() + " ===");
+			System.out.println("1 - Adicionar musica");
+			System.out.println("2 - Editar musica");
+			System.out.println("3 - Remover musica");
+			System.out.println("4 - Listar musicas");
+			System.out.println("0 - Voltar");
+			int opcao = lerInteiroValido(sc, "");
 
-		for (Musica musica : plataforma.getMusicas()) {
-			if (titulo.equalsIgnoreCase(musica.getTitulo())) {
-				return musica;
+			switch (opcao) {
+				case 1:
+					adicionarMusicaNaPlaylist(sc, plataforma, playlist);
+					break;
+				case 2:
+					editarMusicaDaPlaylist(sc, playlist);
+					break;
+				case 3:
+					removerMusicaDaPlaylist(sc, playlist);
+					break;
+				case 4:
+					listarPlaylist(playlist);
+					break;
+				case 0:
+					executando = false;
+					break;
+				default:
+					System.out.println("Opcao invalida.");
 			}
 		}
+	}
 
-		return null;
+	private static void adicionarMusicaNaPlaylist(Scanner sc, Plataforma plataforma, Playlist playlist) {
+		if (plataforma.getTotalMusicas() == 0) {
+			System.out.println("Nao ha musicas cadastradas na plataforma.");
+			return;
+		}
+
+		listarAcervo(plataforma.getMusicas(), plataforma.getTotalMusicas());
+		int id = lerInteiroValido(sc, "ID da musica: ");
+		if (id == 0) {
+			return;
+		}
+
+		try {
+			Musica musica = plataforma.getMusica(id);
+			if (playlist.adicionar(musica)) {
+				System.out.println("Musica adicionada na playlist.");
+			} else {
+				System.out.println("Musica inexistente, ja existe na playlist ou a playlist esta cheia.");
+			}
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Musica inexistente na plataforma.");
+		}
+	}
+
+	private static void editarMusicaDaPlaylist(Scanner sc, Playlist playlist) {
+		if (playlist.getQuantidade() == 0) {
+			System.out.println("Playlist vazia.");
+			return;
+		}
+
+		listarPlaylist(playlist);
+		int posicao = lerInteiroValido(sc, "Numero da musica na playlist: ");
+		if (posicao < 1 || posicao > playlist.getQuantidade()) {
+			System.out.println("Posicao invalida.");
+			return;
+		}
+
+		Musica musica = playlist.getNaPosicao(posicao - 1);
+		String novoTitulo = lerTextoValido(sc, "Novo titulo: ");
+		String novoArtista = lerTextoValido(sc, "Novo artista: ");
+		int novaDuracao = lerInteiroValido(sc, "Nova duracao em segundos: ");
+
+		try {
+			musica.setTitulo(novoTitulo);
+			musica.setArtista(novoArtista);
+			musica.setDuracaoSegundos(novaDuracao);
+			System.out.println("Musica atualizada na playlist e na plataforma.");
+		} catch (IllegalArgumentException e) {
+			System.out.println("Erro ao editar musica: " + e.getMessage());
+		}
+	}
+
+	private static void removerMusicaDaPlaylist(Scanner sc, Playlist playlist) {
+		if (playlist.getQuantidade() == 0) {
+			System.out.println("Playlist vazia.");
+			return;
+		}
+
+		listarPlaylist(playlist);
+		int posicao = lerInteiroValido(sc, "Numero da musica para remover: ");
+		if (posicao < 1 || posicao > playlist.getQuantidade()) {
+			System.out.println("Posicao invalida.");
+			return;
+		}
+
+		if (playlist.removerNaPosicao(posicao - 1)) {
+			System.out.println("Musica removida da playlist.");
+		} else {
+			System.out.println("Nao foi possivel remover a musica.");
+		}
+	}
+
+	private static void listarPlaylist(Playlist playlist) {
+		if (playlist.getQuantidade() == 0) {
+			System.out.println("Playlist vazia.");
+			return;
+		}
+
+		for (int indice = 0; indice < playlist.getQuantidade(); indice++) {
+			Musica musica = playlist.getNaPosicao(indice);
+			System.out.println((indice + 1) + " - " + musica.getId() + " - " + musica.getTitulo() + " - "
+					+ musica.getArtista() + " (" + musica.getDuracaoFormatada() + ")");
+		}
+	}
+
+	private static void buscarPorId(Scanner sc, Plataforma plataforma) {
+		int id = lerInteiroValido(sc, "ID: ");
+		try {
+			exibirMusica(plataforma.getMusica(id));
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Musica inexistente na plataforma.");
+		}
 	}
 
 	private static void buscarPorTitulo(Scanner sc, Plataforma plataforma) {
 		String titulo = lerTextoValido(sc, "Titulo: ");
-		exibirMusica(buscarMusicaPorTitulo(plataforma, titulo));
+		exibirMusica(plataforma.getMusicaPorTitulo(titulo));
 	}
 
 	private static void reproduzirMusica(Scanner sc, Plataforma plataforma) {
@@ -195,10 +338,64 @@ public class App {
 			return;
 		}
 
-		Musica musica = plataforma.getMusica(id);
+		try {
+			Musica musica = plataforma.getMusica(id);
+			musica.reproduzir();
+			System.out.println("Musica reproduzida.");
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Musica inexistente na plataforma.");
+		}
+	}
 
-		musica.reproduzir();
-		System.out.println("Musica reproduzida.");
+	private static void atualizarMusicaNaPlataforma(Scanner sc, Plataforma plataforma) {
+		if (plataforma.getTotalMusicas() == 0) {
+			System.out.println("Acervo vazio.");
+			return;
+		}
+
+		listarAcervo(plataforma.getMusicas(), plataforma.getTotalMusicas());
+		int id = lerInteiroValido(sc, "ID da musica para atualizar: ");
+		if (id == 0) {
+			return;
+		}
+
+		try {
+			plataforma.getMusica(id);
+			String novoTitulo = lerTextoValido(sc, "Novo titulo: ");
+			String novoArtista = lerTextoValido(sc, "Novo artista: ");
+			int novaDuracao = lerInteiroValido(sc, "Nova duracao em segundos: ");
+
+			if (plataforma.atualizarMusica(id, novoTitulo, novoArtista, novaDuracao)) {
+				System.out.println("Musica atualizada na plataforma e nas playlists vinculadas.");
+			} else {
+				System.out.println("Nao foi possivel atualizar a musica.");
+			}
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Musica inexistente na plataforma.");
+		}
+	}
+
+	private static void removerMusicaNaPlataforma(Scanner sc, Plataforma plataforma) {
+		if (plataforma.getTotalMusicas() == 0) {
+			System.out.println("Acervo vazio.");
+			return;
+		}
+
+		listarAcervo(plataforma.getMusicas(), plataforma.getTotalMusicas());
+		int id = lerInteiroValido(sc, "ID da musica para remover: ");
+		if (id == 0) {
+			return;
+		}
+
+		try {
+			if (plataforma.removerMusica(id)) {
+				System.out.println("Musica removida da plataforma e de todas as playlists.");
+			} else {
+				System.out.println("Nao foi possivel remover a musica.");
+			}
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Musica inexistente na plataforma.");
+		}
 	}
 
 
@@ -238,6 +435,9 @@ public class App {
 		System.out.println("5 - Buscar musica por titulo");
 		System.out.println("6 - Reproduzir uma musica");
 		System.out.println("7 - Listar acervo");
+		System.out.println("8 - Gerenciar playlists");
+		System.out.println("9 - Atualizar musica da plataforma");
+		System.out.println("10 - Remover musica da plataforma");
 		System.out.println("0 - Sair");
 		System.out.print("Opcao: ");
 	}

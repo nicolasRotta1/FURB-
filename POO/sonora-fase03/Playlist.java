@@ -4,12 +4,18 @@ public class Playlist {
 	private Usuario dono;
 	private Musica[] musicas;
 	private int quantidade;
+	private Plataforma plataforma;
 
 	public Playlist(String nome, Usuario dono) {
+		this(nome, dono, null);
+	}
+
+	public Playlist(String nome, Usuario dono, Plataforma plataforma) {
 		validaNome(nome);
 		validarDono(dono);
-		this.nome = nome;
+		this.nome = nome.trim();
 		this.dono = dono;
+		this.plataforma = plataforma;
 		this.musicas = new Musica[CAPACIDADE];
 		this.quantidade = 0;
 	}
@@ -23,6 +29,22 @@ public class Playlist {
 		}
 		if (musica == null) {
 			throw new IllegalArgumentException("Música inválida: não é possível adicionar uma música nula na playlist.");
+		}
+
+		if (plataforma != null) {
+			try {
+				if (plataforma.getMusica(musica.getId()) != musica) {
+					return false;
+				}
+			} catch (IndexOutOfBoundsException e) {
+				return false;
+			}
+		}
+
+		for (int indice = 0; indice < quantidade; indice++) {
+			if (musicas[indice].getId() == musica.getId()) {
+				return false;
+			}
 		}
 
 		musicas[quantidade] = musica;
