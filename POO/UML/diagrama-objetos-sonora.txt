@@ -1,0 +1,70 @@
+Diagrama de Objetos - Sonora
+
+Objetivo:
+Este diagrama mostra um cenário concreto de objetos do sistema, sem incluir a classe App.
+
+
+[Objeto: plataforma1 : Plataforma]
+  - musicas = [musica1, musica2]
+  - usuarios = [ana, bia, carlos]
+  - playlists = [playlist1, playlist2]
+
+[Objeto: ana : Usuario]
+  - id = 1
+  - nome = "Ana"
+  - email = "ana@mail.com"
+  - seguindo = [bia]
+
+[Objeto: bia : Usuario]
+  - id = 2
+  - nome = "Bia"
+  - email = "bia@mail.com"
+  - seguindo = [carlos]
+
+[Objeto: carlos : Usuario]
+  - id = 3
+  - nome = "Carlos"
+  - email = "carlos@mail.com"
+  - seguindo = []
+
+[Objeto: musica1 : Musica]
+  - id = 1
+  - titulo = "Bohemian Rhapsody"
+  - artista = "Queen"
+  - duracaoSegundos = 354
+  - reproducoes = 0
+
+[Objeto: musica2 : Musica]
+  - id = 2
+  - titulo = "Shape of You"
+  - artista = "Ed Sheeran"
+  - duracaoSegundos = 233
+  - reproducoes = 1
+
+[Objeto: playlist1 : Playlist]
+  - nome = "Favoritas"
+  - dono = ana
+  - musicas = [musica1, musica2]
+  - plataforma = plataforma1
+
+[Objeto: playlist2 : Playlist]
+  - nome = "Relax"
+  - dono = bia
+  - musicas = [musica2]
+  - plataforma = plataforma1
+
+Relacionamentos:
+- plataforma1.musicas contém musica1 e musica2
+- plataforma1.usuarios contém ana, bia e carlos
+- plataforma1.playlists contém playlist1 e playlist2
+- playlist1.dono = ana
+- playlist2.dono = bia
+- playlist1.musicas contém musica1 e musica2
+- playlist2.musicas contém musica2
+- ana.seguindo contém bia
+- bia.seguindo contém carlos
+
+Observações:
+- A associação de Usuario com outros Usuario é reflexiva: um usuário pode seguir outros usuários.
+- Playlist referencia sua plataforma e seu dono.
+- Musica é parte do catálogo da Plataforma e pode pertencer a playlists.

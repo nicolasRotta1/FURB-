@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -128,7 +129,7 @@ public class UsuarioTest {
     }
 
     @Test
-    @DisplayName("US01 - seguir com usuário válido adiciona à lista")
+    @DisplayName("PL25 - seguir com usuário válido adiciona à lista")
     public void seguir_usuarioValido_adicionaNaLista() {
         Usuario u1 = new Usuario("Ana", "ana@mail.com");
         Usuario u2 = new Usuario("Bia", "bia@mail.com");
@@ -140,7 +141,7 @@ public class UsuarioTest {
     }
 
     @Test
-    @DisplayName("US01 - seguir usuário duplicado não adiciona duas vezes")
+    @DisplayName("PL25 - seguir usuário duplicado não adiciona duas vezes")
     public void seguir_usuarioDuplicado_naoDuplica() {
         Usuario u1 = new Usuario("Ana", "ana@mail.com");
         Usuario u2 = new Usuario("Bia", "bia@mail.com");
@@ -152,13 +153,19 @@ public class UsuarioTest {
     }
 
     @Test
-    @DisplayName("US01 - seguir a si mesmo lança IllegalArgumentException")
+    @DisplayName("PL25 - seguir a si mesmo lança IllegalArgumentException")
     public void seguir_mesmoUsuario_lancaIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> usuario.seguir(usuario));
     }
 
+    @Test 
+    @DisplayName("PL25 - seguir usuário nulo lança IllegalArgumentException")
+    public void seguir_usuarioNulo_lancaIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> usuario.seguir(null));
+    }
+
     @Test
-    @DisplayName("US01 - deixarDeSeguir remove usuário da lista")
+    @DisplayName("PL25 - deixarDeSeguir remove usuário da lista")
     public void deixarDeSeguir_usuarioExistente_removeDaLista() {
         Usuario u1 = new Usuario("Ana", "ana@mail.com");
         Usuario u2 = new Usuario("Bia", "bia@mail.com");
@@ -168,4 +175,34 @@ public class UsuarioTest {
 
         assertEquals(0, u1.getQuantidadeSeguindo());
     }
+
+    @Test 
+    @DisplayName ("PL25 - deixar de seguir usuario inexistente retorna false")
+    public void deixarDeSeguir_usuarioInexistente_retornaFalse() {
+        Usuario u1 = new Usuario("Ana", "ana@mail.com");
+        Usuario u2 = new Usuario("Bia", "bia@mail.com");
+
+        boolean result = u1.deixarDeSeguir(u2);
+
+        assertFalse(result);
+    }
+
+    @Test 
+    @DisplayName("PL25 - deixarDeSeguir usuário não existente não altera a lista")
+    public void deixarDeSeguir_usuarioNaoExistente_naoAlteraLista() {
+        Usuario u1 = new Usuario("Ana", "ana@mail.com");
+        Usuario u2 = new Usuario("Bia", "bia@mail.com");
+
+        u1.deixarDeSeguir(u2);
+
+        assertEquals(0, u1.getQuantidadeSeguindo());
+    }
+
+    @Test 
+    @DisplayName("PL25 - deixarDeSeguir usuário nulo lança IllegalArgumentException")
+    public void deixarDeSeguir_usuarioNulo_lancaIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> usuario.deixarDeSeguir(null));
+    }
+
+
 }

@@ -311,6 +311,18 @@
         <mxCell id="r24e" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=center;verticalAlign=middle;spacing=4;" value="2" vertex="1">
           <mxGeometry height="46" width="110" x="640" y="1204" as="geometry" />
         </mxCell>
+        <mxCell id="r25a" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=center;verticalAlign=middle;spacing=4;" value="PL25" vertex="1">
+          <mxGeometry height="46" width="70" x="40" y="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="r25b" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=middle;spacing=6;" value="Usuario" vertex="1">
+          <mxGeometry height="46" width="110" x="110" y="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="r25c" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=middle;spacing=6;" value="seguir(Usuario) / deixarDeSeguir(Usuario) / getQuantidadeSeguindo()" vertex="1">
+          <mxGeometry height="46" width="420" x="220" y="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="r25e" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=center;verticalAlign=middle;spacing=4;" value="4" vertex="1">
+          <mxGeometry height="46" width="110" x="640" y="1250" as="geometry" />
+        </mxCell>
         <mxCell id="tota" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DCE6F1;strokeColor=#4472C4;fontColor=#1F4E78;fontStyle=1;fontSize=10.5;align=center;verticalAlign=middle;spacing=4;" value="Total" vertex="1">
           <mxGeometry height="40" width="70" x="40" y="1250" as="geometry" />
         </mxCell>
@@ -1260,6 +1272,72 @@
         </mxCell>
         <mxCell id="8j8AtUi6oKmkLKzCkoPX-845" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="getNome() retorna &quot;  Ana  &quot; (sem trim)" vertex="1">
           <mxGeometry height="74" width="330" x="680" y="5065" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-header" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1F4E78;strokeColor=#1F4E78;fontColor=#FFFFFF;fontStyle=1;fontSize=13;align=left;verticalAlign=middle;spacing=8;" value="US01 - Validar associação reflexiva de Usuário (seguir e deixar de seguir)" vertex="1">
+          <mxGeometry height="30" width="970" x="40" y="5169" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-sub" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D9E2F3;strokeColor=#1F4E78;fontColor=#1F4E78;fontStyle=2;fontSize=9;align=left;verticalAlign=middle;spacing=8;" value="PL25 | Caso de uso: US01 | Classe: Usuario  |  Método(s): seguir(Usuario) / deixarDeSeguir(Usuario) / getQuantidadeSeguindo()  |   —  " vertex="1">
+          <mxGeometry height="24" width="970" x="40" y="5199" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-caso-head" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4472C4;strokeColor=#2F528F;fontColor=#FFFFFF;fontStyle=1;fontSize=11;align=center;verticalAlign=middle;" value="Caso" vertex="1">
+          <mxGeometry height="28" width="50" x="40" y="5223" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-desc-head" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4472C4;strokeColor=#2F528F;fontColor=#FFFFFF;fontStyle=1;fontSize=11;align=center;verticalAlign=middle;" value="Descrição" vertex="1">
+          <mxGeometry height="28" width="260" x="90" y="5223" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-entr-head" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4472C4;strokeColor=#2F528F;fontColor=#FFFFFF;fontStyle=1;fontSize=11;align=center;verticalAlign=middle;" value="Entrada" vertex="1">
+          <mxGeometry height="28" width="330" x="350" y="5223" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-said-head" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#4472C4;strokeColor=#2F528F;fontColor=#FFFFFF;fontStyle=1;fontSize=11;align=center;verticalAlign=middle;" value="Saída esperada" vertex="1">
+          <mxGeometry height="28" width="330" x="680" y="5223" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-c1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=center;verticalAlign=middle;" value="1" vertex="1">
+          <mxGeometry height="74" width="50" x="40" y="5251" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-d1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="seguir com usuário válido adiciona à lista" vertex="1">
+          <mxGeometry height="74" width="260" x="90" y="5251" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-e1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="u1 segue u2" vertex="1">
+          <mxGeometry height="74" width="330" x="350" y="5251" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-s1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="getQuantidadeSeguindo() = 1 e u1.getSeguindo().contains(u2)" vertex="1">
+          <mxGeometry height="74" width="330" x="680" y="5251" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-c2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=center;verticalAlign=middle;" value="2" vertex="1">
+          <mxGeometry height="74" width="50" x="40" y="5325" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-d2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="seguir usuário duplicado não adiciona duas vezes" vertex="1">
+          <mxGeometry height="74" width="260" x="90" y="5325" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-e2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="u1 segue u2 duas vezes" vertex="1">
+          <mxGeometry height="74" width="330" x="350" y="5325" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-s2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="getQuantidadeSeguindo() continua em 1" vertex="1">
+          <mxGeometry height="74" width="330" x="680" y="5325" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-c3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=center;verticalAlign=middle;" value="3" vertex="1">
+          <mxGeometry height="74" width="50" x="40" y="5399" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-d3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="seguir a si mesmo lança exceção" vertex="1">
+          <mxGeometry height="74" width="260" x="90" y="5399" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-e3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="u1.seguir(u1)" vertex="1">
+          <mxGeometry height="74" width="330" x="350" y="5399" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-s3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="Lança IllegalArgumentException" vertex="1">
+          <mxGeometry height="74" width="330" x="680" y="5399" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-c4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=center;verticalAlign=middle;" value="4" vertex="1">
+          <mxGeometry height="74" width="50" x="40" y="5473" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-d4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="deixarDeSeguir remove usuário da lista" vertex="1">
+          <mxGeometry height="74" width="260" x="90" y="5473" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-e4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="u1 segue u2 e depois deixa de seguir" vertex="1">
+          <mxGeometry height="74" width="330" x="350" y="5473" as="geometry" />
+        </mxCell>
+        <mxCell id="us01-s4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#BFBFBF;fontColor=#000000;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="getQuantidadeSeguindo() volta para 0" vertex="1">
+          <mxGeometry height="74" width="330" x="680" y="5473" as="geometry" />
         </mxCell>
         <mxCell id="8j8AtUi6oKmkLKzCkoPX-341" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1F4E78;strokeColor=#1F4E78;fontColor=#FFFFFF;fontStyle=1;fontSize=13;align=left;verticalAlign=middle;spacing=8;" value="PL12 - Validar construtor de Playlist com dados inválidos" vertex="1">
           <mxGeometry height="30" width="970" x="40" y="5169" as="geometry" />
