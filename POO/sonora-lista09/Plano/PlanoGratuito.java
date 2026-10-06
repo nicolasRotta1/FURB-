@@ -1,12 +1,9 @@
 package Plano;
 
 public final class PlanoGratuito extends Plano {
-    public PlanoGratuito() {
-        this("Gratuito", 1);
-    }
 
-    public PlanoGratuito(String nome, int maxDispositivos) {
-        super(nome, maxDispositivos);
+    public PlanoGratuito() {
+        super("Gratuito", 1);
     }
 
     @Override

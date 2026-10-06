@@ -2,12 +2,10 @@ package Plano;
 
 public class PlanoFamilia extends PlanoPago {
 
-    public static final double PRECO_MENSAL = 39.90;
+    public static final double PRECO_MENSAL = 24.90;
     private int quantidadeMembros;
 
-
-
-    public PlanoFamilia( int quantidadeMembros) {
+    public PlanoFamilia(int quantidadeMembros) {
         super("Familia", 6, PRECO_MENSAL);
         setQuantidadeMembros(quantidadeMembros);
     }
@@ -21,6 +19,10 @@ public class PlanoFamilia extends PlanoPago {
             throw new IllegalArgumentException("Membros deve ser de 1 a 6");
         }
         this.quantidadeMembros = quantidadeMembros;
+    }
+
+    public double getPrecoPorMembro() {
+        return calcularMensalidade() / quantidadeMembros;
     }
 
     @Override

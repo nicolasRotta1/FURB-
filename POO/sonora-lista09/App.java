@@ -1,4 +1,3 @@
-import Plano.Plano;
 import Plano.PlanoFamilia;
 import Plano.PlanoGratuito;
 import Plano.PlanoIndividual;
